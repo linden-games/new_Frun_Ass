@@ -7,7 +7,7 @@ public class Raycast : MonoBehaviour
     private bool dragging = false;
     private float distance;
     RaycastHit hit;
-
+    bool parent = false;
     public Rigidbody Ball;
 
 
@@ -36,7 +36,7 @@ public class Raycast : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 dragging = false;
-            hit.transform.parent = null;
+            parent = false;
             }
 
             if (dragging)
@@ -44,9 +44,12 @@ public class Raycast : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if(Physics.Raycast(ray, out hit) && hit.rigidbody)
                 {
-                hit.transform.position = transform.position;
-                hit.transform.rotation = Quaternion.Euler(0, 0, 0);
-                hit.transform.parent = transform;
+                parent = true;
+                if (parent)
+                {
+                    hit.transform.position = transform.position;
+                    hit.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
                 }
                 Vector3 rayPoint = ray.GetPoint(distance);
                 transform.position = new Vector3(rayPoint.x, rayPoint.y + 1, rayPoint.z);

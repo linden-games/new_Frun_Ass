@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 205485487}
   m_Layer: 0
   m_Name: leg
-  m_TagString: Untagged
+  m_TagString: leg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,9 +545,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276602926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9ace1431d1f30469f29f18417b5758, type: 3}
+  m_Script: {fileID: 11500000, guid: afb3f5c73945cb0469b211b7955b8b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ball: {fileID: 1424302857}
 --- !u!1 &1424302852
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +564,7 @@ GameObject:
   - component: {fileID: 1424302857}
   m_Layer: 0
   m_Name: leg
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -689,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb3f5c73945cb0469b211b7955b8b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabber: {fileID: 1276602926}
+  Ball: {fileID: 0}
 --- !u!4 &1528452542
 Transform:
   m_ObjectHideFlags: 0
@@ -719,7 +720,7 @@ GameObject:
   - component: {fileID: 1572617377}
   m_Layer: 0
   m_Name: leg
-  m_TagString: Untagged
+  m_TagString: leg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -831,7 +832,7 @@ GameObject:
   - component: {fileID: 1950649871}
   m_Layer: 0
   m_Name: leg
-  m_TagString: Untagged
+  m_TagString: leg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
