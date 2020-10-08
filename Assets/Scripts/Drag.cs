@@ -50,25 +50,6 @@ public class Drag : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if(transform.position.x < 1.2f && 0.5f < transform.position.x && transform.position.z < -6.2f && -6.7f < transform.position.z)
-        {
-            transform.position = new Vector3(0.867f, 0.592f, -6.478f);
-        }
-
-        if (transform.position.x > -1.2f && -0.5f > transform.position.x && transform.position.z < -6.2f && -6.7f < transform.position.z)
-        {
-            transform.position = new Vector3(-0.867f, 0.592f, -6.478f);
-        }
-        if (transform.position.x < 1.2f && 0.5f < transform.position.x && transform.position.z < -5.3f && -6.1f < transform.position.z)
-        {
-            transform.position = new Vector3(0.867f, 0.592f, -5.714f);
-            
-        }
-        if (transform.position.x > -1.2f && -0.5f > transform.position.x && transform.position.z < -5.3f && -6.1f < transform.position.z)
-        {
-            transform.position = new Vector3(-0.867f, 0.592f, -5.714f);
-        }
-
-
+      
     }
 }

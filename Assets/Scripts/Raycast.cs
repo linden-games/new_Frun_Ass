@@ -10,11 +10,23 @@ public class Raycast : MonoBehaviour
     public static bool parent = true;
     public GameObject grabber;
     public GameObject leg, leg1, leg2, leg3, table;
-    int a = 0;
+    #region Bool variables
+    bool bool1 = true, bool2 = true, bool3 = true, bool4 = true, bool5 = true, bool6 = true, bool7 = true, bool8 = true,
+        bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true;
+    #endregion
+    List<GameObject> legs = new List<GameObject>();
+    public Animator anim;
+    public Animator chivi;
+    public GameObject civi;
+    Animation cam;
 
     // Use this for initialization
     void Start()
     {
+        legs.Add(leg);
+        legs.Add(leg1);
+        legs.Add(leg2);
+        legs.Add(leg3);
 
     }
 
@@ -27,133 +39,193 @@ public class Raycast : MonoBehaviour
 
     void Update()
     {
-        if (parent)
+        while (parent)
         {
-            if (leg.transform.position.x < 1.2f && 0.5f < leg.transform.position.x && leg.transform.position.z < -6.2f && -6.7f < leg.transform.position.z)
+            if (bool1 && leg.transform.position.x < 1.2f && 0.5f < leg.transform.position.x && leg.transform.position.z < -6.2f && -6.7f < leg.transform.position.z)
             {
                 leg.transform.position = new Vector3(0.867f, -0.408f, -6.478f);
                 leg.transform.parent = table.transform;
+                parent = false;
+                bool1 = false;
+                break;
             }
 
-            if (leg.transform.position.x > -1.2f && -0.5f > leg.transform.position.x && leg.transform.position.z < -6.2f && -6.7f < leg.transform.position.z)
+            if (bool2 && leg.transform.position.x > -1.2f && -0.5f > leg.transform.position.x && leg.transform.position.z < -6.2f && -6.7f < leg.transform.position.z)
             {
                 leg.transform.position = new Vector3(-0.867f, -0.408f, -6.478f);
                 leg.transform.parent = table.transform;
+                parent = false;
+                bool2 = false;
+                break;
             }
-            if (leg.transform.position.x < 1.2f && 0.5f < transform.position.x && leg.transform.position.z < -5.3f && -6.1f < leg.transform.position.z)
+            if (bool3 && leg.transform.position.x < 1.2f && 0.5f < leg.transform.position.x && leg.transform.position.z < -5.3f && -6.1f < leg.transform.position.z)
             {
                 leg.transform.position = new Vector3(0.867f, -0.408f, -5.714f);
                 leg.transform.parent = table.transform;
+                parent = false;
+                bool3 = false;
+                break;
             }
-            if (leg.transform.position.x > -1.2f && -0.5f > leg.transform.position.x && leg.transform.position.z < -5.3f && -6.1f < leg.transform.position.z)
+            if (bool4 && leg.transform.position.x > -1.2f && -0.5f > leg.transform.position.x && leg.transform.position.z < -5.3f && -6.1f < leg.transform.position.z)
             {
                 leg.transform.position = new Vector3(-0.867f, -0.408f, -5.714f);
                 leg.transform.parent = table.transform;
+                parent = false;
+                bool4 = false;
+                break;
             }
 
 
-
-
-            if (leg1.transform.position.x < 1.2f && 0.5f < leg1.transform.position.x && leg1.transform.position.z < -6.2f && -6.7f < leg1.transform.position.z)
+            if (bool5 && leg1.transform.position.x < 1.2f && 0.5f < leg1.transform.position.x && leg1.transform.position.z < -6.2f && -6.7f < leg1.transform.position.z)
             {
                 leg1.transform.position = new Vector3(0.867f, -0.408f, -6.478f);
                 leg1.transform.parent = table.transform;
+                parent = false;
+                bool5 = false;
+                break;
             }
 
-            if (leg1.transform.position.x > -1.2f && -0.5f > leg1.transform.position.x && leg1.transform.position.z < -6.2f && -6.7f < leg1.transform.position.z)
+            if (bool6 && leg1.transform.position.x > -1.2f && -0.5f > leg1.transform.position.x && leg1.transform.position.z < -6.2f && -6.7f < leg1.transform.position.z)
             {
                 leg1.transform.position = new Vector3(-0.867f, -0.408f, -6.478f);
                 leg1.transform.parent = table.transform;
+                parent = false;
+                bool6 = false;
+                break;
             }
-            if (leg1.transform.position.x < 1.2f && 0.5f < leg1.transform.position.x && leg1.transform.position.z < -5.3f && -6.1f < leg1.transform.position.z)
+            if (bool7 && leg1.transform.position.x < 1.2f && 0.5f < leg1.transform.position.x && leg1.transform.position.z < -5.3f && -6.1f < leg1.transform.position.z)
             {
                 leg1.transform.position = new Vector3(0.867f, -0.408f, -5.714f);
                 leg1.transform.parent = table.transform;
+                parent = false;
+                bool7 = false;
+                break;
             }
-            if (leg1.transform.position.x > -1.2f && -0.5f > leg1.transform.position.x && leg1.transform.position.z < -5.3f && -6.1f < leg1.transform.position.z)
+            if (bool8 && leg1.transform.position.x > -1.2f && -0.5f > leg1.transform.position.x && leg1.transform.position.z < -5.3f && -6.1f < leg1.transform.position.z)
             {
                 leg1.transform.position = new Vector3(-0.867f, -0.408f, -5.714f);
                 leg1.transform.parent = table.transform;
+                parent = false;
+                bool8 = false;
+                break;
             }
 
 
-            if (leg2.transform.position.x < 1.2f && 0.5f < leg2.transform.position.x && leg2.transform.position.z < -6.2f && -6.7f < leg2.transform.position.z)
+            if (bool9 && leg2.transform.position.x < 1.2f && 0.5f < leg2.transform.position.x && leg2.transform.position.z < -6.2f && -6.7f < leg2.transform.position.z)
             {
                 leg2.transform.position = new Vector3(0.867f, -0.408f, -6.478f);
                 leg2.transform.parent = table.transform;
+                parent = false;
+                bool9 = false;
+                break;
             }
 
-            if (leg2.transform.position.x > -1.2f && -0.5f > leg2.transform.position.x && leg2.transform.position.z < -6.2f && -6.7f < leg2.transform.position.z)
+            if (bool10 && leg2.transform.position.x > -1.2f && -0.5f > leg2.transform.position.x && leg2.transform.position.z < -6.2f && -6.7f < leg2.transform.position.z)
             {
                 leg2.transform.position = new Vector3(-0.867f, -0.408f, -6.478f);
                 leg2.transform.parent = table.transform;
+                parent = false;
+                bool10 = false;
+                break;
             }
-            if (leg2.transform.position.x < 1.2f && 0.5f < leg2.transform.position.x && leg2.transform.position.z < -5.3f && -6.1f < leg2.transform.position.z)
+            if (bool11 && leg2.transform.position.x < 1.2f && 0.5f < leg2.transform.position.x && leg2.transform.position.z < -5.3f && -6.1f < leg2.transform.position.z)
             {
                 leg2.transform.position = new Vector3(0.867f, -0.408f, -5.714f);
                 leg2.transform.parent = table.transform;
+                parent = false;
+                bool11 = false;
+                break;
             }
-            if (leg2.transform.position.x > -1.2f && -0.5f > leg2.transform.position.x && leg2.transform.position.z < -5.3f && -6.1f < leg2.transform.position.z)
+            if (bool12 && leg2.transform.position.x > -1.2f && -0.5f > leg2.transform.position.x && leg2.transform.position.z < -5.3f && -6.1f < leg2.transform.position.z)
             {
                 leg2.transform.position = new Vector3(-0.867f, -0.408f, -5.714f);
                 leg2.transform.parent = table.transform;
+                parent = false;
+                bool12 = false;
+                break;
             }
 
 
 
-            if (leg3.transform.position.x < 1.2f && 0.5f < leg3.transform.position.x && leg3.transform.position.z < -6.2f && -6.7f < leg3.transform.position.z)
+            if (bool13 && leg3.transform.position.x < 1.2f && 0.5f < leg3.transform.position.x && leg3.transform.position.z < -6.2f && -6.7f < leg3.transform.position.z)
             {
                 leg3.transform.position = new Vector3(0.867f, -0.408f, -6.478f);
                 leg3.transform.parent = table.transform;
+                parent = false;
+                bool13 = false;
+                break;
+
             }
 
-            if (leg3.transform.position.x > -1.2f && -0.5f > leg3.transform.position.x && leg3.transform.position.z < -6.2f && -6.7f < leg3.transform.position.z)
+            if (bool14 && leg3.transform.position.x > -1.2f && -0.5f > leg3.transform.position.x && leg3.transform.position.z < -6.2f && -6.7f < leg3.transform.position.z)
             {
                 leg3.transform.position = new Vector3(-0.867f, -0.408f, -6.478f);
                 leg3.transform.parent = table.transform;
+                parent = false;
+                bool14 = false;
+                break;
+
             }
-            if (leg3.transform.position.x < 1.2f && 0.5f < leg3.transform.position.x && leg3.transform.position.z < -5.3f && -6.1f < leg3.transform.position.z)
+            if (bool15 && leg3.transform.position.x < 1.2f && 0.5f < leg3.transform.position.x && leg3.transform.position.z < -5.3f && -6.1f < leg3.transform.position.z)
             {
                 leg3.transform.position = new Vector3(0.867f, -0.408f, -5.714f);
                 leg3.transform.parent = table.transform;
+                parent = false;
+                bool15 = false;
+                break;
+
             }
-            if (leg3.transform.position.x > -1.2f && -0.5f > leg3.transform.position.x && leg3.transform.position.z < -5.3f && -6.1f < leg3.transform.position.z)
+            if (bool16 && leg3.transform.position.x > -1.2f && -0.5f > leg3.transform.position.x && leg3.transform.position.z < -5.3f && -6.1f < leg3.transform.position.z)
             {
                 leg3.transform.position = new Vector3(-0.867f, -0.408f, -5.714f);
                 leg3.transform.parent = table.transform;
+                parent = false;
+                bool16 = false;
+                break;
             }
-
+            parent = false;
         }
 
         if (Input.GetMouseButtonDown(0))
+        {
+            distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+            dragging = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            dragging = false;
+            parent = true;
+            foreach (GameObject leg in legs)
             {
-                distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-                dragging = true;
+                leg.layer = LayerMask.NameToLayer("Default");
             }
-
-            if (Input.GetMouseButtonUp(0))
+        }
+        if (dragging)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit) && hit.rigidbody && hit.transform.parent == null)
             {
-                dragging = false;
-                parent = true;
-            a += 1;
-            }
-
-            if (dragging)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if(Physics.Raycast(ray, out hit) && hit.rigidbody)
-                {
                 parent = false;
                 Vector3 rayPoint = ray.GetPoint(distance);
                 hit.transform.position = new Vector3(rayPoint.x, rayPoint.y, rayPoint.z);
                 hit.transform.rotation = Quaternion.Euler(0, 0, 0);
+                foreach (GameObject leg in legs)
+                {
+                    if (leg.transform != hit.transform)
+                    {
+                        leg.layer = LayerMask.NameToLayer("Ignore Raycast");
+                    }
+                }
             }
-
-            }
-            if(a >= 4)
+        }
+        if (table.transform.childCount >= 4)
         {
-
+            anim.Play("Camera");
+            cam = Camera.main.GetComponent<Animation>();
+            if(cam["Camera"].time > 0.99f)
+            {
+                chivi.Play("Chivi");
+            }
         }
     }
-
 }
