@@ -11,13 +11,20 @@ public class Raycast : MonoBehaviour
     public static bool parent = true;
     public GameObject grabber;
     public GameObject leg, leg1, leg2, leg3, table;
+    #region Bool variables
     bool bool1 = true, bool2 = true, bool3 = true, bool4 = true, bool5 = true, bool6 = true, bool7 = true, bool8 = true,
         bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true;
+    #endregion
+    List<GameObject> legs = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
-        
+        legs.Add(leg);
+        legs.Add(leg1);
+        legs.Add(leg2);
+        legs.Add(leg3);
+
     }
 
     // Update is called once per frame
@@ -29,7 +36,7 @@ public class Raycast : MonoBehaviour
 
     void Update()
     {
-        while(parent)
+        while (parent)
         {
             if (bool1 && leg.transform.position.x < 1.2f && 0.5f < leg.transform.position.x && leg.transform.position.z < -6.2f && -6.7f < leg.transform.position.z)
             {
@@ -48,7 +55,7 @@ public class Raycast : MonoBehaviour
                 bool2 = false;
                 break;
             }
-            if (bool3 && leg.transform.position.x < 1.2f && 0.5f < transform.position.x && leg.transform.position.z < -5.3f && -6.1f < leg.transform.position.z)
+            if (bool3 && leg.transform.position.x < 1.2f && 0.5f < leg.transform.position.x && leg.transform.position.z < -5.3f && -6.1f < leg.transform.position.z)
             {
                 leg.transform.position = new Vector3(0.867f, -0.408f, -5.714f);
                 leg.transform.parent = table.transform;
@@ -64,8 +71,6 @@ public class Raycast : MonoBehaviour
                 bool4 = false;
                 break;
             }
-
-
 
 
             if (bool5 && leg1.transform.position.x < 1.2f && 0.5f < leg1.transform.position.x && leg1.transform.position.z < -6.2f && -6.7f < leg1.transform.position.z)
@@ -187,18 +192,28 @@ public class Raycast : MonoBehaviour
         {
             dragging = false;
             parent = true;
+            foreach (GameObject leg in legs)
+            {
+                leg.layer = LayerMask.NameToLayer("Default");
+            }    
         }
         if (dragging)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out hit) && hit.rigidbody && hit.transform.parent==null)
+            if (Physics.Raycast(ray, out hit) && hit.rigidbody && hit.transform.parent == null)
             {
                 parent = false;
                 Vector3 rayPoint = ray.GetPoint(distance);
                 hit.transform.position = new Vector3(rayPoint.x, rayPoint.y, rayPoint.z);
                 hit.transform.rotation = Quaternion.Euler(0, 0, 0);
+                foreach(GameObject leg in legs)
+                {
+                    if(leg.transform != hit.transform)
+                    {
+                        leg.layer = LayerMask.NameToLayer("Ignore Raycast");
+                    }
+                }
             }
         }
     }
-
 }
