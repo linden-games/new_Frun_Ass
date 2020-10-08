@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Raycast : MonoBehaviour
@@ -15,10 +16,13 @@ public class Raycast : MonoBehaviour
         bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true;
     #endregion
     List<GameObject> legs = new List<GameObject>();
+<<<<<<< HEAD
     public Animator anim;
     public Animator chivi;
     public GameObject civi;
     Animation cam;
+=======
+>>>>>>> e77dbac0297c7cf7c8e0f8f98f6a1732c516609f
 
     // Use this for initialization
     void Start()
@@ -198,7 +202,11 @@ public class Raycast : MonoBehaviour
             foreach (GameObject leg in legs)
             {
                 leg.layer = LayerMask.NameToLayer("Default");
+<<<<<<< HEAD
             }
+=======
+            }    
+>>>>>>> e77dbac0297c7cf7c8e0f8f98f6a1732c516609f
         }
         if (dragging)
         {
@@ -209,14 +217,21 @@ public class Raycast : MonoBehaviour
                 Vector3 rayPoint = ray.GetPoint(distance);
                 hit.transform.position = new Vector3(rayPoint.x, rayPoint.y, rayPoint.z);
                 hit.transform.rotation = Quaternion.Euler(0, 0, 0);
+<<<<<<< HEAD
                 foreach (GameObject leg in legs)
                 {
                     if (leg.transform != hit.transform)
+=======
+                foreach(GameObject leg in legs)
+                {
+                    if(leg.transform != hit.transform)
+>>>>>>> e77dbac0297c7cf7c8e0f8f98f6a1732c516609f
                     {
                         leg.layer = LayerMask.NameToLayer("Ignore Raycast");
                     }
                 }
             }
+<<<<<<< HEAD
         }
         if (table.transform.childCount >= 4)
         {
@@ -229,3 +244,8 @@ public class Raycast : MonoBehaviour
         }
     }
 }
+=======
+        }
+    }
+}
+>>>>>>> e77dbac0297c7cf7c8e0f8f98f6a1732c516609f
