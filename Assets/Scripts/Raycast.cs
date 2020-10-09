@@ -9,14 +9,15 @@ public class Raycast : MonoBehaviour
     private float distance;
     RaycastHit hit;
     public static bool parent = true;
-    public GameObject grabber;
+    public GameObject grabber, screw;
     public GameObject leg, leg1, leg2, leg3, table;
     #region Bool variables
     bool bool1 = true, bool2 = true, bool3 = true, bool4 = true, bool5 = true, bool6 = true, bool7 = true, bool8 = true,
-        bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true;
+        bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true, attach =false;
     #endregion
     List<GameObject> legs = new List<GameObject>();
-
+    public Animator cam;
+    public Animator chivi;
     // Use this for initialization
     void Start()
     {
@@ -26,14 +27,6 @@ public class Raycast : MonoBehaviour
         legs.Add(leg3);
 
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-
-
     void Update()
     {
         while (parent)
@@ -196,6 +189,13 @@ public class Raycast : MonoBehaviour
             {
                 leg.layer = LayerMask.NameToLayer("Default");
             }
+            if(!attach)
+            {
+                StopCoroutine(Chivile());
+                chivi.enabled = false;
+                screw.transform.position = new Vector3(0.9605f, -0.819f, -6.476f);
+
+            }
         }
         if (dragging)
         {
@@ -214,6 +214,26 @@ public class Raycast : MonoBehaviour
                     }
                 }
             }
+            if(Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Chivi")
+            {
+                chivi.enabled = true;
+                StartCoroutine(Chivile());
+            }
         }
+        if (table.transform.childCount >= 4)
+        {
+            cam.Play("Camera");
+
+        }
+        if(attach)
+        {
+            cam.Play("Camera2");
+        }
+    }
+    IEnumerator Chivile()
+    {
+        chivi.Play("Chivi");
+        yield return new WaitForSeconds(0.75f);
+        attach = true;
     }
 }
