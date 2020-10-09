@@ -13,7 +13,8 @@ public class Raycast : MonoBehaviour
     public GameObject leg, leg1, leg2, leg3, table;
     #region Bool variables
     bool bool1 = true, bool2 = true, bool3 = true, bool4 = true, bool5 = true, bool6 = true, bool7 = true, bool8 = true,
-        bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true, attach =false;
+        bool9 = true, bool10 = true, bool11 = true, bool12 = true, bool13 = true, bool14 = true, bool15 = true, bool16 = true;
+    public bool attach = false;
     #endregion
     List<GameObject> legs = new List<GameObject>();
     public Animator cam;
@@ -191,7 +192,6 @@ public class Raycast : MonoBehaviour
             }
             if(!attach)
             {
-                StopCoroutine(Chivile());
                 chivi.enabled = false;
                 screw.transform.position = new Vector3(0.9605f, -0.819f, -6.476f);
 
@@ -222,18 +222,18 @@ public class Raycast : MonoBehaviour
         }
         if (table.transform.childCount >= 4)
         {
-            cam.Play("Camera");
+            if (!attach)
+            {
+                cam.PlayInFixedTime("Camera");
+            }
+        }
 
-        }
-        if(attach)
-        {
-            cam.Play("Camera2");
-        }
     }
     IEnumerator Chivile()
     {
         chivi.Play("Chivi");
         yield return new WaitForSeconds(0.75f);
         attach = true;
+        cam.SetTrigger("newCam");
     }
 }
